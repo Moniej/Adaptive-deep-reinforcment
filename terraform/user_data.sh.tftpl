@@ -1,0 +1,16 @@
+#!/bin/bash
+set -euxo pipefail
+
+dnf update -y
+dnf install -y git python3 python3-pip unzip awscli htop
+
+mkdir -p /opt/${project_name}
+chown ec2-user:ec2-user /opt/${project_name}
+
+cat >/etc/profile.d/${project_name}.sh <<EOF
+export PROJECT_NAME="${project_name}"
+export PROJECT_BUCKET="${project_bucket_name}"
+export AWS_REGION="${aws_region}"
+EOF
+
+echo "Bootstrap complete for ${project_name}" >/var/log/${project_name}-bootstrap.log
