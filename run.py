@@ -3,7 +3,7 @@ import os
 sys.path.append(os.path.abspath("."))
 
 from src.data.loader import load_forex_data
-from src.features.build_features import build_features
+from src.features.build_features import build_feature_set
 from src.environment.trading_env import TradingEnv
 from src.agents.dqn_agent import DQNAgent
 
@@ -13,7 +13,7 @@ def main():
     data = load_forex_data("data/raw/eurusd.csv")
 
     print("Building features...")
-    data = build_features(data)
+    data = build_feature_set(data)
 
     print("Initializing environment...")
     env = TradingEnv(data)
