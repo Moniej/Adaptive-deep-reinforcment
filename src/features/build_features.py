@@ -18,10 +18,7 @@ def build_feature_set(input_path: str, output_path: str) -> pd.DataFrame:
     df = add_volatility_features(df)
     df = add_session_features(df)
 
-    df = df.dropna()
-
-    Path(output_path).parent.mkdir(parents=True, exist_ok=True)
-    df.to_csv(output_path)
+    df = df.dropna() 
 
     print("✅ Features built and saved")
     print("Final shape:", df.shape)
