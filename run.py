@@ -1,12 +1,16 @@
-from src.data.loader import load_data
+rom src.data.loader import load_data
+import sys
+import os
+sys.path.append(os.path.abspath("."))
+
+from src.data.loader import load_forex_data
 from src.features.build_features import build_features
 from src.environment.trading_env import TradingEnv
 from src.agents.dqn_agent import DQNAgent
-from src.agents.ppo_agent import PPOAgent
 
 def main():
     print("Loading data...")
-    data = load_data()
+    data = load_forex_data("data/raw/eurusd.csv")
 
     print("Building features...")
     data = build_features(data)
@@ -15,7 +19,7 @@ def main():
     env = TradingEnv(data)
 
     print("Training agent...")
-    agent = DQNAgent(env)   # or PPOAgent(env)
+    agent = DQNAgent(env)
     agent.train()
 
     print("Done. Evaluating...")
