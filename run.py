@@ -1,4 +1,3 @@
-from src.data.loader import load_data
 import sys
 import os
 sys.path.append(os.path.abspath("."))
@@ -7,6 +6,7 @@ from src.data.loader import load_forex_data
 from src.features.build_features import build_features
 from src.environment.trading_env import TradingEnv
 from src.agents.dqn_agent import DQNAgent
+
 
 def main():
     print("Loading data...")
@@ -26,6 +26,7 @@ def main():
     results = agent.evaluate()
 
     print(results)
+
 
 if __name__ == "__main__":
     main()
