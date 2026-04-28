@@ -1,4 +1,4 @@
-rom src.data.loader import load_data
+from src.data.loader import load_data
 import sys
 import os
 sys.path.append(os.path.abspath("."))
