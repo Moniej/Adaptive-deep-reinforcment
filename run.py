@@ -23,9 +23,6 @@ def main():
     agent.train()
 
     print("Done. Evaluating...")
-    results = agent.evaluate()
-
-    print(results)
 
 
 if __name__ == "__main__":
